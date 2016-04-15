@@ -10,11 +10,11 @@ import (
 
 type request struct {
 	body         string
-	recievedTime time.Time
+	receivedTime time.Time
 }
 
 type templatableRequest struct {
-	TimeSinceRecieved time.Duration
+	TimeSinceReceived time.Duration
 	Body              string
 }
 
@@ -31,7 +31,7 @@ func main() {
 		}
 
 		requestsLock.Lock()
-		requests = append(requests, request{body: string(body), recievedTime: time.Now()})
+		requests = append(requests, request{body: string(body), receivedTime: time.Now()})
 		requestsLock.Unlock()
 	})
 
@@ -42,7 +42,7 @@ func main() {
 
 		for i := len(requests) - 1; i >= 0; i-- {
 			templInfo = append(templInfo, templatableRequest{
-				TimeSinceRecieved: time.Since(requests[i].recievedTime),
+				TimeSinceReceived: time.Since(requests[i].receivedTime),
 				Body:              requests[i].body})
 		}
 
