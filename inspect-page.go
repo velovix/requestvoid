@@ -12,7 +12,7 @@ var inspectPage = `
 
 	<body>
 		{{ range . }}
-			<strong>Recieved</strong>: {{ printf "%s" .TimeSinceRecieved }}
+			<strong>Received</strong>: {{ printf "%s" .TimeSinceReceived }}
 			<br />
 			<pre style="white-space:normal;">
 {{ .Body }}
